@@ -81,6 +81,7 @@ public class SpecificMallJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Name: ");
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -90,6 +91,7 @@ public class SpecificMallJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Location: ");
 
+        jTextField2.setEditable(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -99,6 +101,7 @@ public class SpecificMallJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Known For: ");
 
+        jTextField4.setEditable(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -108,6 +111,7 @@ public class SpecificMallJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel6.setText("Outlets: ");
 
+        jTextField5.setEditable(false);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -117,6 +121,7 @@ public class SpecificMallJPanel extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel7.setText("Wheelchair Service: ");
 
+        jTextField6.setEditable(false);
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -310,7 +315,7 @@ public class SpecificMallJPanel extends javax.swing.JPanel {
         mallVisitor.setTime(java.time.LocalTime.now().toString());
         system.getMallVisitors().getVisitorList().add(mallVisitor);
         System.out.println("MallRep username"+system.getMallRepDirectory().returnRepforBeverageCompany(mall.getId()).getUsername());
-        
+        JOptionPane.showMessageDialog(this, "We look forward to your visit");
 
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -325,7 +330,8 @@ public class SpecificMallJPanel extends javax.swing.JPanel {
         String products = jTextArea1.getText();
         mallEnquiry.setProducts(products);
         system.getMallEnquiries().getEnquiryList().add(mallEnquiry);
-                System.out.println("MallRep username"+system.getMallRepDirectory().returnRepforBeverageCompany(mall.getId()).getUsername());
+        System.out.println("MallRep username"+system.getMallRepDirectory().returnRepforBeverageCompany(mall.getId()).getUsername());
+        JOptionPane.showMessageDialog(this, "Enquiry saved");
 
         }
         else

@@ -32,8 +32,14 @@ public class SpecificRestaurantJPanel extends javax.swing.JPanel {
     
     EcoSystem system;
     Hotel hotel;
+    DefaultTableModel model1;
+    DefaultTableModel model2;
     public SpecificRestaurantJPanel(EcoSystem system, Hotel hotel) {
         initComponents();
+        this.model1 = (DefaultTableModel) jTable1.getModel();
+        this.model2 = (DefaultTableModel) jTable2.getModel();
+        model1.setRowCount(0);
+        model2.setRowCount(0);
         this.system = system;
         this.hotel = hotel;
         postInitComponents();
@@ -55,12 +61,11 @@ public class SpecificRestaurantJPanel extends javax.swing.JPanel {
     }    
 public void populateMenuTable() {
     Map<String, Float> menu = hotel.getFoodMenu();
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    model.setRowCount(0); // Clear existing rows
+ // Clear existing rows
 
     // Add rows to the model
     for (Map.Entry<String, Float> entry : menu.entrySet()) {
-        model.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        model1.addRow(new Object[]{entry.getKey(), entry.getValue()});
     }
 //    populateCartTable();
 }
@@ -93,8 +98,7 @@ public void populateMenuTable() {
         float totalPrice = price * quantity;
         
         // Add the item details to the cart table
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.addRow(new Object[]{itemName, quantity, totalPrice});
+        model2.addRow(new Object[]{itemName, quantity, totalPrice});
     } else {
         // Handle the case where no row is selected
         JOptionPane.showMessageDialog(null, "Please select an item to add to the cart", "Error", JOptionPane.ERROR_MESSAGE);
@@ -229,6 +233,8 @@ public void populateMenuTable() {
             }
         });
 
+        jTextField1.setEditable(false);
+
         jButton3.setBackground(new java.awt.Color(102, 0, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Back");
@@ -288,8 +294,7 @@ public void populateMenuTable() {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(179, 179, 179)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(183, 183, 183)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -363,12 +368,9 @@ public void populateMenuTable() {
                                 .addComponent(jLabel2)
                                 .addGap(28, 28, 28)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(47, 47, 47)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -400,8 +402,17 @@ public void populateMenuTable() {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        if(jTable2.getRowCount() > 0)
+        {
         placeOrder();
+        model2.setRowCount(0);
         System.out.println("Rep username"+system.getHotelRepDirectory().returnRepforHotel(hotel.getId()).getUsername());
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "PLease select an item and add it to the cart!");
+        }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -419,6 +430,7 @@ public void populateMenuTable() {
     try {
         quantity = Integer.parseInt(jTextField2.getText());
     } catch (NumberFormatException e) {
+        e.printStackTrace();
         JOptionPane.showMessageDialog(null, "Please enter a valid quantity.");
         return;
     }
@@ -437,7 +449,7 @@ public void populateMenuTable() {
     }
 
     DefaultTableModel cartModel = (DefaultTableModel) jTable2.getModel();
-    cartModel.setRowCount(0);
+//    cartModel.setRowCount(0);
     cartModel.addRow(new Object[]{item, quantity, price * quantity});
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -451,6 +463,8 @@ public void populateMenuTable() {
                 return; // Stop the method if validation fails
             }
         } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+            System.out.println("Please enter a valid number for guests.");
             JOptionPane.showMessageDialog(null, "Please enter a valid number for guests.");
             return; // Stop the method if validation fails
         }

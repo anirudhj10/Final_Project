@@ -86,6 +86,8 @@ public class ShopRepViewAppointmentsJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Total Appointments: ");
 
+        jTextField1.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

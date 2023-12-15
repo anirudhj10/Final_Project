@@ -30,7 +30,6 @@ public class MuseumRepDashboardJPanel extends javax.swing.JPanel {
         
         //method for click-response action buttons
         ArrayList<JButton> buttonList = new ArrayList<>();
-        buttonList.add(btnUpdateFee);
         buttonList.add(btnViewDets);
         
         ActionListener buttonActionListener = new ActionListener() {
@@ -69,7 +68,6 @@ public class MuseumRepDashboardJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnViewDets = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
-        btnUpdateFee = new javax.swing.JButton();
         jPanel2 = new AnalyzeMarketJpanel.jPanelGradient();
 
         jSplitPane1.setDividerLocation(160);
@@ -95,8 +93,6 @@ public class MuseumRepDashboardJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnUpdateFee.setText("Update Fee");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -105,18 +101,15 @@ public class MuseumRepDashboardJPanel extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnViewDets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUpdateFee, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addComponent(btnViewDets)
-                .addGap(69, 69, 69)
-                .addComponent(btnUpdateFee)
-                .addGap(66, 66, 66)
+                .addGap(158, 158, 158)
                 .addComponent(btnLogout)
                 .addContainerGap(393, Short.MAX_VALUE))
         );
@@ -163,7 +156,6 @@ public class MuseumRepDashboardJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnUpdateFee;
     private javax.swing.JButton btnViewDets;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

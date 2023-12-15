@@ -14,6 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import UserInterface.Analyst.AnalyzeMarketJpanel;
+import UserInterface.Customer.CustomerRequestHelpJPanel;
 
 /**
  *
@@ -133,9 +134,8 @@ public class HospitalsNearbyJPanel extends javax.swing.JPanel {
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
-                        .addComponent(jLabel1)
-                        .addGap(134, 134, 134)))
-                .addContainerGap(315, Short.MAX_VALUE))
+                        .addComponent(jLabel1)))
+                .addContainerGap(478, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +183,7 @@ public class HospitalsNearbyJPanel extends javax.swing.JPanel {
             String hospitalName = jTable1.getValueAt(selectedRow, 0).toString();
             Hospital hospital = system.getHospitalDirectory().getHospitalByName(hospitalName);
             SpecificHospitalJPanel panel = new SpecificHospitalJPanel(system, hospital);
-            CustomerDashboardJPanel.jSplitPane1.setRightComponent(panel);
+            CustomerRequestHelpJPanel.jSplitPane1.setRightComponent(panel);
             
             
         }

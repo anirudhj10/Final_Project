@@ -23,12 +23,23 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
 
    EcoSystem system;
     Shop shop;
+    DefaultTableModel model1;
+    DefaultTableModel model2;
+
     public SpecificShopJPanel(EcoSystem system, Shop shop) {
+
+
+
         initComponents();
+        this.model2 = (DefaultTableModel) jTable2.getModel();
+        this.model1 = (DefaultTableModel) jTable1.getModel();
+        model1.setRowCount(0); // Clear existing rows
+        model2.setRowCount(0);
         this.system = system;
         this.shop = shop;
         postInitComponents();
         populateMenuTable();
+        
     }
 
     private void postInitComponents() {
@@ -51,12 +62,11 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
     
     public void populateMenuTable() {
     Map<String, Float> menu = shop.getShopMenu();
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    model.setRowCount(0); // Clear existing rows
+     
 
     // Add rows to the model
     for (Map.Entry<String, Float> entry : menu.entrySet()) {
-        model.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        model1.addRow(new Object[]{entry.getKey(), entry.getValue()});
     }
 //    populateCartTable();
 }
@@ -84,8 +94,7 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
         float totalPrice = price * quantity;
         
         // Add the item details to the cart table
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.addRow(new Object[]{itemName, quantity, totalPrice});
+        model2.addRow(new Object[]{itemName, quantity, totalPrice});
     } else {
         // Handle the case where no row is selected
         JOptionPane.showMessageDialog(null, "Please select an item to add to the cart", "Error", JOptionPane.ERROR_MESSAGE);
@@ -132,7 +141,6 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
     System.out.print("ShopRep username for the order -"+system.getShopRepDirectory().getShopRep(shop.getId()).getUsername());
 
     // Optionally, clear the cart table after placing the order
-    model.setRowCount(0);
     
     // Show confirmation message
     JOptionPane.showMessageDialog(null, "Order placed successfully!", "Order", JOptionPane.INFORMATION_MESSAGE);
@@ -210,6 +218,8 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jTextField1.setEditable(false);
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Item");
@@ -363,6 +373,7 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
     try {
         quantity = Integer.parseInt(jTextField2.getText());
     } catch (NumberFormatException e) {
+        e.printStackTrace();
         JOptionPane.showMessageDialog(null, "Please enter a valid quantity.");
         return;
     }
@@ -381,7 +392,7 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
     }
 
     DefaultTableModel cartModel = (DefaultTableModel) jTable2.getModel();
-    cartModel.setRowCount(0);
+
     cartModel.addRow(new Object[]{item, quantity, price * quantity});
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -398,15 +409,27 @@ public class SpecificShopJPanel extends javax.swing.JPanel {
             app.setCustomerId(CustomerDirectory.currentCustomer.getId());
             app.setShopId(shop.getId());
             app.setTime(jTextField3.getText());
+            system.getShoppingAppointments().getAppointmentList().add(app);
             System.out.print("ShopRep username for the booking -"+system.getShopRepDirectory().getShopRep(shop.getId()).getUsername());
+            JOptionPane.showMessageDialog(this, "Booking Made!");
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(jTable2.getRowCount() > 0)
+        {
         placeOrder();
+        model2.setRowCount(0);
         System.out.println("Shop Rep username"+system.getShopRepDirectory().getShopRep(shop.getId()).getUsername());
+        JOptionPane.showMessageDialog(this, "Order placed!");
+
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Please populate the cart first!");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

@@ -66,8 +66,12 @@ public class TheatreRepViewBookingJPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        jTextField2.setEditable(false);
+
         jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel6.setText("Total Revenue: ");
+
+        jTextField1.setEditable(false);
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Total visitors: ");

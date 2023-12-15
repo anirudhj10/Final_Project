@@ -75,7 +75,7 @@ public class HotelRepViewOnlineOrdersJPanel extends javax.swing.JPanel {
     double totalRevenue = rowData.stream()
                                  .mapToDouble(row -> (Float)row.get(1)) 
                                  .sum();
-    jTextField2.setText(String.valueOf(totalRevenue));
+    jTextField2.setText(String.format("%.2f", totalRevenue));
 
     }
     
@@ -114,8 +114,12 @@ public class HotelRepViewOnlineOrdersJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jTextField1.setEditable(false);
+
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Total orders: ");
+
+        jTextField2.setEditable(false);
 
         jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel6.setText("Total Revenue: ");

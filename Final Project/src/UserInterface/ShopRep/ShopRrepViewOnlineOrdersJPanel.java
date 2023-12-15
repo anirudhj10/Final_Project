@@ -139,8 +139,12 @@ public class ShopRrepViewOnlineOrdersJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jTextField1.setEditable(false);
+
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Total orders: ");
+
+        jTextField2.setEditable(false);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -242,7 +246,14 @@ public class ShopRrepViewOnlineOrdersJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(jTable2.getRowCount() > 0)
+        {
         JOptionPane.showMessageDialog(this, "Order successfullu added to the pipeline!");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "No orders to add to pipeline");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -204,6 +204,8 @@ public class SpecificPubJpanel extends javax.swing.JPanel {
                 return; // Stop the method if validation fails
             }
         } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+            System.out.println("Please enter a valid number for guests.");
             JOptionPane.showMessageDialog(null, "Please enter a valid number for guests.");
             return; // Stop the method if validation fails
         }

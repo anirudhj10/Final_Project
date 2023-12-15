@@ -25,6 +25,15 @@ public class UserDirectory {
                 return userList;
 
     }
+
+    public boolean checkUsername(String text) {
+        for(User user: userList)
+        {
+            if(user.getUsername().equals(text))
+                return true;
+        }
+        return false;
+    }
     
     
     

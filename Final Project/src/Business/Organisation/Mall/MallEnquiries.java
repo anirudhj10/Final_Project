@@ -34,15 +34,15 @@ public class MallEnquiries {
         return specificEnquiries;
     }
     
-    public String fetchQueryforCustomer(int id)
+    public ArrayList<String> fetchQueryforCustomer(int id)
     {
-        
+        ArrayList<String> queries = new ArrayList<>();
         for(MallEnquiry enquiry: enquiryList)
         {
             if(enquiry.getCustomerId() == id)
-                return enquiry.getProducts();
+                queries.add(enquiry.getProducts());
         }
-        return null;
+        return queries;
     }
     
     

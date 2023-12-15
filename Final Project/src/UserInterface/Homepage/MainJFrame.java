@@ -42,6 +42,7 @@ import UserInterface.ShopRep.ShopRepDashboardJPanel;
 import UserInterface.TheatreRep.TheatreRepDashboardJPanel;
 import UserInterface.VehicleRep.VehicleRepDashboardJPanel;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -58,27 +59,27 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         system = ConfigureASystem.configure();
         System.out.println("Customer username- "+system.getCustomerDirectory().getCustomerList().get(0).getUsername());
-        System.out.println("Customer password- "+system.getCustomerDirectory().getCustomerList().get(0).getPassword());
+        System.out.println("Customer password- "+system.getCustomerDirectory().getCustomerList().get(0).getUsername());
         System.out.println("BeverageRep username- "+system.getBeverageRepDirectory().getBeverageRepList().get(0).getUsername());
-        System.out.println("BeverageRep password- "+system.getBeverageRepDirectory().getBeverageRepList().get(0).getPassword());
+        System.out.println("BeverageRep password- "+system.getBeverageRepDirectory().getBeverageRepList().get(0).getUsername());
         System.out.println("HospitalRep username- "+system.getHospitalRepDirectory().getHospitalRepList().get(0).getUsername());
-        System.out.println("HospitalRep password- "+system.getHospitalRepDirectory().getHospitalRepList().get(0).getPassword());
+        System.out.println("HospitalRep password- "+system.getHospitalRepDirectory().getHospitalRepList().get(0).getUsername());
         System.out.println("HotelRep username- "+system.getHotelRepDirectory().getHotelRepList().get(0).getUsername());
-        System.out.println("HotelRep password- "+system.getHotelRepDirectory().getHotelRepList().get(0).getPassword());        
+        System.out.println("HotelRep password- "+system.getHotelRepDirectory().getHotelRepList().get(0).getUsername());        
         System.out.println("MallRep username- "+system.getMallRepDirectory().getMallRepList().get(0).getUsername());
-        System.out.println("MallRep password- "+system.getMallRepDirectory().getMallRepList().get(0).getPassword()); 
+        System.out.println("MallRep password- "+system.getMallRepDirectory().getMallRepList().get(0).getUsername()); 
         System.out.println("MuseumRep username- "+system.getMuseumRepDirectory().getMuseumRepList().get(0).getUsername());
-        System.out.println("MuseumRep password- "+system.getMuseumRepDirectory().getMuseumRepList().get(0).getPassword());
+        System.out.println("MuseumRep password- "+system.getMuseumRepDirectory().getMuseumRepList().get(0).getUsername());
         System.out.println("ParkRep username- "+system.getParkRepDirectory().getParkRepList().get(0).getUsername());
-        System.out.println("ParkRep password- "+system.getParkRepDirectory().getParkRepList().get(0).getPassword());
+        System.out.println("ParkRep password- "+system.getParkRepDirectory().getParkRepList().get(0).getUsername());
         System.out.println("PoliceRep username- "+system.getPoliceRepDirectory().getPoliceRepList().get(0).getUsername());
-        System.out.println("PoliceRep password- "+system.getPoliceRepDirectory().getPoliceRepList().get(0).getPassword());
+        System.out.println("PoliceRep password- "+system.getPoliceRepDirectory().getPoliceRepList().get(0).getUsername());
         System.out.println("ShopRep username- "+system.getShopRepDirectory().getShopRepList().get(0).getUsername());
-        System.out.println("ShopRep password- "+system.getShopRepDirectory().getShopRepList().get(0).getPassword());
+        System.out.println("ShopRep password- "+system.getShopRepDirectory().getShopRepList().get(0).getUsername());
         System.out.println("TheatreRep username- "+system.getTheatreRepDirectory().getTheatreRepList().get(0).getUsername());
-        System.out.println("TheatreRep password- "+system.getTheatreRepDirectory().getTheatreRepList().get(0).getPassword());
+        System.out.println("TheatreRep password- "+system.getTheatreRepDirectory().getTheatreRepList().get(0).getUsername());
         System.out.println("VehicleRep username- "+system.getVehicleRepDirectory().getVehicleRepList().get(0).getUsername());
-        System.out.println("VehicleRep password- "+system.getVehicleRepDirectory().getVehicleRepList().get(0).getPassword());
+        System.out.println("VehicleRep password- "+system.getVehicleRepDirectory().getVehicleRepList().get(0).getUsername());
     }
     
             public static void changeScreen(JPanel jPanel)
@@ -225,6 +226,8 @@ public class MainJFrame extends javax.swing.JFrame {
         String password = txtPassword.getText();
 //        ArrayList<Customer> customers = system.getCustomerDirectory().getCustomerList();
 //        System.out.prifo
+        if(!txtUsername.getText().isEmpty() && !txtPassword.getText().isEmpty())
+        {
 
         
         Customer customer = system.getCustomerDirectory().canLogin(username, password);
@@ -233,7 +236,10 @@ public class MainJFrame extends javax.swing.JFrame {
             CustomerDirectory.currentCustomer = customer;
             CustomerDashboardJPanel panel = new CustomerDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
+        
+
         
         BeverageRep beverageRep = system.getBeverageRepDirectory().canLogin(username, password);
         
@@ -242,6 +248,7 @@ public class MainJFrame extends javax.swing.JFrame {
             BeverageRepDirectory.currentRep = beverageRep;
             BeverageRepDashboardJPanel panel = new BeverageRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
 //        
         HospitalRep hospitalRep = system.getHospitalRepDirectory().canLogin(username, password);
@@ -252,6 +259,7 @@ public class MainJFrame extends javax.swing.JFrame {
             HospitalRepDirectory.currentHospitalRep = hospitalRep;
             HospitalRepDahsboard panel = new HospitalRepDahsboard(system);
             changeScreen(panel);
+            return;
         }
 //        
         HotelRep hotelRep = system.getHotelRepDirectory().canLogin(username, password);
@@ -261,6 +269,7 @@ public class MainJFrame extends javax.swing.JFrame {
             HotelRepDirectory.currentHotelRep = hotelRep;
             HotelRepDashboardJPanel panel = new HotelRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
 //        
         MallRep mallRep = system.getMallRepDirectory().canLogin(username, password);
@@ -270,6 +279,7 @@ public class MainJFrame extends javax.swing.JFrame {
             MallRepDirectory.currentMallRep = mallRep;
             MallRepDashboardJPanel panel = new MallRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
 //        
         MuseumRep museumRep = system.getMuseumRepDirectory().canLogin(username, password);
@@ -279,6 +289,7 @@ public class MainJFrame extends javax.swing.JFrame {
             MuseumRepDirectory.currentMuseumRep = museumRep;
             MuseumRepDashboardJPanel panel = new MuseumRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
 //        
         ParkRep parkRep = system.getParkRepDirectory().canLogin(username, password);
@@ -288,6 +299,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ParkRepDirectory.currentParkRep = parkRep;
             ParkRepDahsboardJPanel panel = new ParkRepDahsboardJPanel (system);
             changeScreen(panel);
+            return;
         }
 //        
         PoliceRep policeRep = system.getPoliceRepDirectory().canLogin(username, password);
@@ -297,6 +309,7 @@ public class MainJFrame extends javax.swing.JFrame {
             PoliceRepDirectory.currentPoliceRep = policeRep;
             PoliceRepDashboardJPanel panel = new PoliceRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
 //        
         ShopRep shopRep = system.getShopRepDirectory().canLogin(username, password);
@@ -306,6 +319,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ShopRepDirectory.currentShopRep = shopRep;
             ShopRepDashboardJPanel panel = new ShopRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
 //        
         TheatreRep theatreRep = system.getTheatreRepDirectory().canLogin(username, password);
@@ -315,6 +329,7 @@ public class MainJFrame extends javax.swing.JFrame {
             TheatreRepDirectory.currentTheatreRep = theatreRep;
             TheatreRepDashboardJPanel panel = new TheatreRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
 //        
         VehicleRep vehicleRep = system.getVehicleRepDirectory().canLogin(username, password);
@@ -324,6 +339,7 @@ public class MainJFrame extends javax.swing.JFrame {
             VehicleRepDirectory.currentVehiclerep = vehicleRep;
             VehicleRepDashboardJPanel panel = new VehicleRepDashboardJPanel(system);
             changeScreen(panel);
+            return;
         }
         MarketAnalyst analystRep = system.getAnalystDirectory().canLogin(username, password);
         
@@ -331,7 +347,23 @@ public class MainJFrame extends javax.swing.JFrame {
         {
             AnalyzeMarketJpanel panel = new AnalyzeMarketJpanel(system);
             changeScreen(panel);
+            return;
         }
+        
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Invalid Credentials!");
+            txtUsername.setText("");
+            txtPassword.setText("");
+            return;
+        }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Username and Password cannot be blank!");
+            return;
+        }
+        
         
 
         

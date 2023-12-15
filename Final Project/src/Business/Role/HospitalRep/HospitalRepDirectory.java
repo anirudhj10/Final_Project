@@ -7,6 +7,7 @@ package Business.Role.HospitalRep;
 import Business.Organisation.Hospital.Appointment;
 import com.db4o.collections.ActivatableArrayList;
 import java.util.ArrayList;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -29,7 +30,7 @@ public class HospitalRepDirectory {
     {
         for(HospitalRep rep: hospitalRepList)
         {
-            if(rep.getUsername().equals(username) && rep.getPassword().equals(password))
+            if(rep.getUsername().equals(username) && BCrypt.checkpw(password, rep.getPassword()))
             {
                 return rep;
             }

@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import UserInterface.Analyst.AnalyzeMarketJpanel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,10 +27,22 @@ public class RegisterJpanel extends javax.swing.JPanel {
      */
     
     EcoSystem system;
+    String selectedCity;
     public RegisterJpanel(EcoSystem system) {
         initComponents();
         this.system = system;
+        fillComboBox();
         
+    }
+    
+            public void fillComboBox()
+    {
+        List<String> cities = Arrays.asList("New York", "Los Angeles", "Chicago", 
+                                    "Houston", "Phoenix", "Philadelphia", 
+                                    "San Antonio", "San Diego", "Dallas", 
+                                    "San Jose");
+        
+        jComboBox1.setModel(new DefaultComboBoxModel<String>(cities.toArray(new String[0])));
     }
 
 
@@ -56,6 +70,10 @@ public class RegisterJpanel extends javax.swing.JPanel {
         jTextField23 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jTextField24 = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel1.setText("Register a User");
@@ -101,15 +119,36 @@ public class RegisterJpanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel28.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel28.setText("Email:");
+
+        jLabel29.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel29.setText("Location: ");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(310, Short.MAX_VALUE)
+                .addGap(85, 85, 85)
+                .addComponent(jButton5)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(390, 390, 390)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel27)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -118,10 +157,6 @@ public class RegisterJpanel extends javax.swing.JPanel {
                                 .addComponent(jLabel26)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel25)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel24)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -133,22 +168,26 @@ public class RegisterJpanel extends javax.swing.JPanel {
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel1)
-                                        .addGap(33, 33, 33)))))
-                        .addGap(392, 392, 392))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(437, 437, 437))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jButton5)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(33, 33, 33))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(540, 540, 540)
+                        .addComponent(jButton4)))
+                .addContainerGap(781, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addComponent(jButton5)
-                .addGap(18, 18, 18)
+                .addGap(3, 3, 3)
                 .addComponent(jLabel1)
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -160,19 +199,27 @@ public class RegisterJpanel extends javax.swing.JPanel {
                     .addComponent(jLabel24))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27))
-                .addGap(34, 34, 34)
+                .addGap(54, 54, 54)
                 .addComponent(jButton4)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -189,21 +236,56 @@ public class RegisterJpanel extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        User user = new User();
-        Random random = new Random();
-        user.setName(jTextField1.getText());
-        user.setAge(Integer.parseInt(jTextField2.getText()));
-        user.setId(ConfigureASystem.userIndex++);
-        List<String> cities = Arrays.asList("New York", "Los Angeles", "Chicago", 
-                                    "Houston", "Phoenix", "Philadelphia", 
-                                    "San Antonio", "San Diego", "Dallas", 
-                                    "San Jose");
-        String city = cities.get(random.nextInt(cities.size()));
-        user.setLocation(city);
-        user.setUsername(jTextField21.getText());
-        user.setPassword(jTextField22.getText());
-        system.getCustomerDirectory().getCustomerList().add(new Customer(user));
-        system.getUserDirectory().getUserList().add(user);
+        if(!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty() && !jTextField21.getText().isEmpty() && !jTextField22.getText().isEmpty() && !jTextField23.getText().isEmpty() && !jTextField24.getText().isEmpty() && !jComboBox1.getSelectedItem().toString().isEmpty())
+        {
+            try {
+                User user = new User();
+                Random random = new Random();
+                user.setName(jTextField1.getText());
+                user.setAge(Integer.parseInt(jTextField2.getText()));
+                user.setId(ConfigureASystem.userIndex++);
+                user.setLocation(selectedCity);
+                if(jTextField24.getText().contains("@"))
+                {
+                user.setEmail(jTextField24.getText());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Please enter a valid email address");
+                    return;
+                }
+                if(!system.getUserDirectory().checkUsername(jTextField21.getText()))
+                {
+                user.setUsername(jTextField21.getText());
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "username already exists! please choose a different username");
+                    jTextField21.setText("");
+                    return;
+                }
+                if(jTextField22.getText().equals(jTextField23.getText()))
+                {
+                user.setPassword(user.hashPassword(jTextField22.getText()));
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Passwords do not match");
+                    return;
+                }
+                
+                system.getCustomerDirectory().getCustomerList().add(new Customer(user));
+                system.getUserDirectory().getUserList().add(user);
+                JOptionPane.showMessageDialog(this, "User successfully registered");
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                System.out.println("NumberFormatException: Invalid number format");
+            }
+
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Please make sure all the details are filled!");
+        }
 
         
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -218,21 +300,31 @@ public class RegisterJpanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        selectedCity = jComboBox1.getSelectedItem().toString();
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
     // End of variables declaration//GEN-END:variables
 }

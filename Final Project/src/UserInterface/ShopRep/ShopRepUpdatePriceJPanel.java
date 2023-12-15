@@ -65,6 +65,8 @@ public class ShopRepUpdatePriceJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jTextField1.setEditable(false);
+
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Current Price: ");
 

@@ -109,6 +109,8 @@ public class HotelRepViewOnlineReservationsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jTextField1.setEditable(false);
+
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Total guests: ");
 

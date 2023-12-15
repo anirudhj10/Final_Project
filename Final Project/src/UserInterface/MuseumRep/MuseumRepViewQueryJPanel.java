@@ -131,6 +131,7 @@ public class MuseumRepViewQueryJPanel extends javax.swing.JPanel {
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -226,13 +227,24 @@ public class MuseumRepViewQueryJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jTextArea1.getText().isEmpty() || jTextArea2.getText().isEmpty())
+
+
+        if(!(jTable1.getRowCount() == 0))
         {
-            JOptionPane.showMessageDialog(this, "PLease answer the query!");
+            if(jTextArea1.getText().isEmpty() || jTextArea2.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(this, "PLease answer the query!");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Query answer sent to customer!");
+
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(this, "Query answer sent to customer!");
+            
+            JOptionPane.showMessageDialog(this, "No questions to be answered!");
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed

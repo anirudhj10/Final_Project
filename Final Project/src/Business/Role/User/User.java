@@ -4,6 +4,8 @@
  */
 package Business.Role.User;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 /**
  *
  * @author anirudh
@@ -15,7 +17,18 @@ public class User {
     private String username;
     private String password;
     private int age;
+    private String email;
     private String location;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
 
     // Existing constructors and methods
 
@@ -26,9 +39,18 @@ public class User {
         this.username = user.username;
         this.password = user.password;
         this.age = user.age;
+        this.email = user.email;
         this.location = user.location;
     }
 
+    public String hashPassword(String password)
+    {
+        String afterHashing = BCrypt.hashpw(password, BCrypt.gensalt());
+        return afterHashing;
+        
+    }
+    
+    
     public User() {
     }
 
@@ -88,6 +110,8 @@ public class User {
     public void setLocation(String location) {
         this.location = location;
     }
+
+
     
     
 }

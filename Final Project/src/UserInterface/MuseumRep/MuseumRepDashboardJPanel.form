@@ -53,9 +53,8 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnViewDets" max="32767" attributes="0"/>
                           <Component id="btnLogout" max="32767" attributes="0"/>
-                          <Component id="btnUpdateFee" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -64,9 +63,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                       <Component id="btnViewDets" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                      <Component id="btnUpdateFee" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="393" max="32767" attributes="0"/>
                   </Group>
@@ -102,11 +99,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnUpdateFee">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Update Fee"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

@@ -61,6 +61,8 @@ public class HotelRepUpdatePriceJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel1.setText("Update Price");
 
+        jTextField1.setEditable(false);
+
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Current Price: ");
 

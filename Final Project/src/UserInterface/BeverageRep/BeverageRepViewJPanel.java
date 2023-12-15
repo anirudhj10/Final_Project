@@ -47,7 +47,7 @@ public class BeverageRepViewJPanel extends javax.swing.JPanel {
         // Populate rowData with reservations
         for (Reservation reservation : reservations) {
             Vector<Object> row = new Vector<>();
-            row.add(reservation.getCustomerId()); // Assuming you want to show Customer ID as Name
+            row.add(system.getCustomerDirectory().getCustomerById(reservation.getCustomerId()).getName()); // Assuming you want to show Customer ID as Name
             row.add(reservation.getNoOfGuests());
             row.add(reservation.getTime());
 

@@ -94,6 +94,7 @@ public class SpecificParkJpanel extends javax.swing.JPanel {
             }
         });
 
+        jTextField4.setEditable(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -109,12 +110,14 @@ public class SpecificParkJpanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Name: ");
 
+        jTextField6.setEditable(false);
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -124,6 +127,7 @@ public class SpecificParkJpanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Location: ");
 
+        jTextField2.setEditable(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -186,8 +190,7 @@ public class SpecificParkJpanel extends javax.swing.JPanel {
                                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGap(209, 209, 209)
-                                            .addComponent(jButton3)
-                                            .addGap(76, 76, 76)))
+                                            .addComponent(jButton3)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(18, 18, 18)
@@ -279,6 +282,7 @@ public class SpecificParkJpanel extends javax.swing.JPanel {
         visitor.setCustomerId(CustomerDirectory.currentCustomer.getId());
         visitor.setParkId(park.getId());
         visitor.setTime(LocalTime.now().toString());
+        system.getParkVisitors().getVisitorList().add(visitor);
         JOptionPane.showMessageDialog(this, "We look forward to your visit!");
         System.out.println("Park Rep Username - "+ system.getParkRepDirectory().findRepForPark(park.getId()).getUsername());
     }//GEN-LAST:event_jButton3ActionPerformed

@@ -59,10 +59,7 @@ import java.util.Random;
 import java.util.Set;
 
 
-/**
- *
- * @author Subbu
- */
+
 public class ConfigureASystem {
 
     public static int userIndex = 0;
@@ -105,19 +102,20 @@ public class ConfigureASystem {
         for (String firstName : uniqueNames) {
             int id = userIndex++;
             int age = ran.nextInt(46) + 20;
+            String email = firstName+"@gmail.com";
             String location = cities.get(ran.nextInt(cities.size())); 
 
             User user = new User(); 
             user.setId(id);
             user.setName(firstName);
             user.setUsername(firstName); 
-            user.setPassword(firstName); 
+            user.setPassword(user.hashPassword(firstName)); 
             user.setAge(age);
+            user.setEmail(email);
             user.setLocation(location);
 
             users.add(user); 
         }
-        System.out.println(users.size());
         
         
         // create 50 customers
@@ -129,7 +127,6 @@ public class ConfigureASystem {
             Customer customer = new Customer(user); 
             customers.add(customer); 
         }
-            System.out.println(customers.size());
             
             
          // creating beverage organisations 
@@ -152,7 +149,7 @@ public class ConfigureASystem {
 
             beverageCompanies.add(company);
         }
-        int id =5;
+ 
         
         
         
@@ -366,6 +363,7 @@ public class ConfigureASystem {
             vehicle.setId(i);
             vehicle.setName(carModels.get(i)); 
             vehicle.setLocation(cities.get(ran.nextInt(cities.size())));
+            vehicle.setAvailability(ran.nextInt(20) + 1);
             vehicle.setCategory(vehicleCategories.get(ran.nextInt(vehicleCategories.size())));
             vehicle.setNoOfSeats(seatingOptions.get(ran.nextInt(seatingOptions.size())));
             vehicle.setHourlyPrice(ran.nextFloat() * (50 - 15) + 15); // Random price between 15 and 50
@@ -407,7 +405,6 @@ public class ConfigureASystem {
         }
     }
 
-    System.out.println("Number of Hospital Reps: " + hospitalReps.size());
 
 
 int hotelRepStartIndex = 130; 
@@ -845,7 +842,7 @@ ArrayList<Event> events = system.getEvents().getEventList();
     user1.setId(650);
     user1.setName("MarketAnalyst");
     user1.setUsername("analyst");
-    user1.setPassword("analyst");
+    user1.setPassword(user1.hashPassword("analyst"));
         MarketAnalyst analyst = new MarketAnalyst(user1);
         system.getAnalystDirectory().getAnalystList().add(analyst);
         

@@ -14,6 +14,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import UserInterface.Analyst.AnalyzeMarketJpanel;
+import java.util.HashMap;
 
 /**
  *
@@ -29,7 +30,31 @@ public class BeverageRepUpdateJPanel extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         populateMenu();
+        postInitComponents();
     }
+    
+    
+        private void postInitComponents() {
+        jTable1.getSelectionModel().addListSelectionListener(e -> {
+                if (!e.getValueIsAdjusting()) {
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow >= 0) { // if a row is actually selected
+            String beverageName = jTable1.getValueAt(selectedRow, 0).toString();
+            BeverageCompany company = system.getBeverageCompanyDirectory().getCompanyById(BeverageRepDirectory.currentRep.getBeverageCompany());
+            HashMap<String, Float> menu = company.getBeverageMenu();
+            for(Map.Entry<String, Float> entry: menu.entrySet())
+            {
+                if(entry.getKey().equals(beverageName))
+                {
+                    jTextField1.setText(String.valueOf(entry.getValue()));
+                }
+            }
+        }
+    }
+            // Your selection logic here
+        });
+    }
+    
     
     public void populateMenu()
     {
@@ -203,6 +228,8 @@ public class BeverageRepUpdateJPanel extends javax.swing.JPanel {
                 // Provide feedback to the user
                 JOptionPane.showMessageDialog(null, "Price updated successfully!");
             } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                System.out.println("Please enter the right format");
                 JOptionPane.showMessageDialog(null, "Please enter a valid price.");
             }
         } else {

@@ -163,6 +163,7 @@ public class ShopRepDashboardJPanel extends javax.swing.JPanel {
     private void btnViewAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppActionPerformed
         // TODO add your handling code here:
         ShopRepViewAppointmentsJPanel panel = new ShopRepViewAppointmentsJPanel(system);
+        jSplitPane1.setRightComponent(panel);
         
     }//GEN-LAST:event_btnViewAppActionPerformed
 

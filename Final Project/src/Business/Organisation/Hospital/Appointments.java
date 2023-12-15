@@ -41,14 +41,15 @@ public class Appointments {
         return appointments;
     }
     
-    public Appointment findAppointmentForCustomer(int id)
+    public ArrayList<Appointment> findAppointmentForCustomer(int id)
     {
+        ArrayList<Appointment> appointments = new ArrayList<>();
         for(Appointment appointment: appointmentList)
         {
             if(appointment.getCustomerId() == id)
-                return appointment;
+                appointments.add(appointment);
         }
-        return null;
+        return appointments;
     }
       
     

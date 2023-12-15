@@ -33,6 +33,7 @@ public class CustomerExlporeActivitieJPanel extends javax.swing.JPanel {
         ArrayList<JButton> buttonList = new ArrayList<>();
         buttonList.add(btnMuseums);
         buttonList.add(btnParks);
+        buttonList.add(btnTheatre);
         
         ActionListener buttonActionListener = new ActionListener() {
             @Override

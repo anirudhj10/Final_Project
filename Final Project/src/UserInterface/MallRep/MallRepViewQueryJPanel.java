@@ -38,8 +38,8 @@ public class MallRepViewQueryJPanel extends javax.swing.JPanel {
         String customerName = jTable1.getValueAt(selectedRow,0).toString();
         
         if (selectedRow >= 0) { // if a row is actually selected
-            String selectedItem = system.getMallEnquiries().fetchQueryforCustomer(system.getCustomerDirectory().getCustomerByName(customerName).getId());
-        jTextArea1.setText(selectedItem);
+         ArrayList<String> selectedItem = system.getMallEnquiries().fetchQueryforCustomer(system.getCustomerDirectory().getCustomerByName(customerName).getId());
+        jTextArea1.setText(selectedItem.get(selectedItem.size()-1));
         }
     }
 
@@ -98,6 +98,7 @@ public class MallRepViewQueryJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Products: ");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -196,7 +197,24 @@ public class MallRepViewQueryJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Yes");
+
+
+        if(!(jTable1.getRowCount()== 0))
+        {
+            if(!jTextArea2.getText().isEmpty() || !jTextArea2.getText().isEmpty())
+            {
+            JOptionPane.showMessageDialog(this, "Query answered!");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Please fill the answer");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "No queries for this mall.");
+        }
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -44,7 +44,7 @@ public class BeverageEnterprise {
         }
     }
 
-    // Create a dataset for the pie chart
+
     DefaultPieDataset<String> dataset = new DefaultPieDataset<>();
     int totalReservationsInCity = companyReservations.values().stream().mapToInt(Integer::intValue).sum();
 
@@ -64,11 +64,11 @@ public class BeverageEnterprise {
         true,
         false);
 
-    // Prepare the chart panel
+
     ChartPanel chartPanel = new ChartPanel(chart);
     chartPanel.setPreferredSize(new Dimension(560, 367)); // Adjust the size as needed
 
-    // Update the target panel with the new chart
+
     targetPanel.removeAll();
     targetPanel.setLayout(new BorderLayout());
     targetPanel.add(chartPanel, BorderLayout.CENTER);

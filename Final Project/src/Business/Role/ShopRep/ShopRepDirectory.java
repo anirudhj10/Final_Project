@@ -5,6 +5,7 @@
 package Business.Role.ShopRep;
 
 import java.util.ArrayList;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -28,7 +29,7 @@ public class ShopRepDirectory {
     {
         for(ShopRep rep: shopRepList)
         {
-            if(rep.getUsername().equals(username) && rep.getPassword().equals(password))
+            if(rep.getUsername().equals(username) && BCrypt.checkpw(password, rep.getPassword()))
             {
                 return rep;
             }

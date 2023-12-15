@@ -73,7 +73,7 @@ public class SpecificTheatreJPanel extends javax.swing.JPanel {
             row[0] = movie.getName();
             row[1] = movie.getTiming();
             row[2] = movie.getDuration();
-            row[3] = movie.getPrice();
+            row[3] = String.format("%.2f", movie.getPrice());
             model.addRow(row);
         }
         
@@ -109,6 +109,7 @@ public class SpecificTheatreJPanel extends javax.swing.JPanel {
         jTextField8 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
+        jTextField4.setEditable(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -121,6 +122,7 @@ public class SpecificTheatreJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Name: ");
 
+        jTextField6.setEditable(false);
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -130,6 +132,7 @@ public class SpecificTheatreJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Screen Technology: ");
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -169,11 +172,15 @@ public class SpecificTheatreJPanel extends javax.swing.JPanel {
             }
         });
 
+        jTextField5.setEditable(false);
+
         jLabel8.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel8.setText("Movie Name: ");
 
         jLabel9.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel9.setText("Timing: ");
+
+        jTextField7.setEditable(false);
 
         jLabel10.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel10.setText("No of Tickets: ");
@@ -299,12 +306,20 @@ public class SpecificTheatreJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        try {
         if(jTextField5.getText().isEmpty() || jTextField7.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Please select a movie to proeed");
         }
+        else if(jTextField8.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter number of tickets");
+        }
         else
         {
+            if(Integer.parseInt(jTextField8.getText()) > 0)
+            {
             Booking booking =  new Booking();
             booking.setCustomerId(CustomerDirectory.currentCustomer.getId());
             booking.setMovieName(movieName);
@@ -316,7 +331,20 @@ public class SpecificTheatreJPanel extends javax.swing.JPanel {
             system.getBookings().getBookingList().add(booking);
             JOptionPane.showMessageDialog(this, "Tickets booked successfully;");
             System.out.println("Theatre rep username - "+ system.getTheatreRepDirectory().findRepforTheatre(theatre.getId()).getUsername());
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "No of tickets cannot be less than 0");
+            }
         }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("NumberFormatException: Invalid number format");
+
+        }
+
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

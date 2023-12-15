@@ -5,6 +5,7 @@
 package Business.Role.Customer;
 
 import java.util.ArrayList;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -28,8 +29,9 @@ public class CustomerDirectory {
     {
         for(Customer customer: customerList)
         {
-            if(customer.getUsername().equals(username) && customer.getPassword().equals(password))
+            if(customer.getUsername().equals(username) && BCrypt.checkpw(password, customer.getPassword()) )
             {
+                
                 return customer;
             }
         }

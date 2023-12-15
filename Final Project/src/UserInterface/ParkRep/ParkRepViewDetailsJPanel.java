@@ -78,6 +78,8 @@ public class ParkRepViewDetailsJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Total visitors: ");
 
+        jTextField1.setEditable(false);
+
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel1.setText("View Visitor Details");
 

@@ -52,6 +52,7 @@ public class MedicalEnterprise {
 
     // Create a ChartPanel to hold the chart
     ChartPanel chartPanel = new ChartPanel(barChart);
+    chartPanel.setPreferredSize(new java.awt.Dimension(560, 367));
     
     // The following line assumes you want to replace the existing contents of the panel
     panel.removeAll();

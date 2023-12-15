@@ -36,7 +36,7 @@ public class VehicleRepUpdateJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) { // if a row is actually selected
             String name = jTable1.getValueAt(selectedRow, 0).toString();
             vehicle = system.getVehicleCompany().getVehicleByName(name);
-            jTextField1.setText(String.valueOf(vehicle.getHourlyPrice()));
+            jTextField1.setText(String.format("%.2f", vehicle.getHourlyPrice()));
             
         }
     }
@@ -141,7 +141,7 @@ public class VehicleRepUpdateJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(528, 528, 528)
                         .addComponent(jButton1)))
-                .addContainerGap(344, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,32 +160,50 @@ public class VehicleRepUpdateJPanel extends javax.swing.JPanel {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jButton1)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(!jTextField2.getText().isEmpty())
-        {
-            vehicle.setHourlyPrice(Float.parseFloat(jTextField2.getText()));
-            JOptionPane.showMessageDialog(this, "Vehicle hourly fee updated");
+        
+        try {
+            
+                if(!jTextField1.getText().isEmpty())
+                {
+                if(!jTextField2.getText().isEmpty())
+                {
+                    vehicle.setHourlyPrice(Float.parseFloat(jTextField2.getText()));
+                    JOptionPane.showMessageDialog(this, "Vehicle hourly fee updated");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Please enter the new fare");
+                }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Please select a record if it exists!");
+                }
+            
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("NumberFormatException: Invalid number format");
         }
+
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
